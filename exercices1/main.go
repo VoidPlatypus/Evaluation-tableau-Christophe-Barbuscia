@@ -31,14 +31,26 @@ func main() {
 
 	unstuff := compterFaibles(equipe)
 	fmt.Printf("les heros les moins stuff sont au nombre de %d\n", unstuff)
+
+
+	degats := 0
+
+    fmt.Print("attaque de l'ennemie en Dgt : ")
+    fmt.Scan(&degats)  
+
+    attaquerEquipe(&equipe, degats)
+    afficherEquipe(equipe)
 }
 
 func afficherEquipe(equipe [6]Soldat) {
-	for i := 0; i < len(equipe); i++ {
-		fmt.Printf("Nom: %s Vie: %d Attaque: %d\n", equipe[i].nom, equipe[i].vie, equipe[i].attaque)
+    for i := 0; i < len(equipe); i++ {
+        if equipe[i].vie == 0 {
+            fmt.Printf("Nom: %s Vie: KO, fallait pas rester dans les AOE   Attaque: %d\n", equipe[i].nom, equipe[i].attaque)
+        } else {
+            fmt.Printf("Nom: %s Vie: %d Attaque: %d\n", equipe[i].nom, equipe[i].vie, equipe[i].attaque)
+        }
 	}
 }
-
 func trouverPlusDeVie(equipe [6]Soldat) Soldat {
 	PVmax := equipe[0]
 	for _, soldat := range equipe {
@@ -76,4 +88,17 @@ func compterFaibles(equipe [6]Soldat) int {
 		}
 	}
 	return soldatfaible
+}
+
+// cette fonction me permet de gerer l'attaque
+func attaquerEquipe(equipe *[6]Soldat, degats int) {
+    for i := range equipe {
+        if equipe[i].vie == 0 {
+            continue 
+        }
+        equipe[i].vie -= degats
+        if equipe[i].vie < 0 {
+            equipe[i].vie = 0 
+        }
+    }
 }
