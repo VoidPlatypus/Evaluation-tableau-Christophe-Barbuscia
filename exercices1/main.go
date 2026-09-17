@@ -33,6 +33,8 @@ func main() {
 
 	degats := 0
 	NombreAttaque := 0
+	vivants := 0
+	Morts := 0
 
 	fmt.Println("combien d'attaques fait l'énnemi?")
 	fmt.Scan(&NombreAttaque)
@@ -41,18 +43,22 @@ func main() {
 
 		afficherEquipe(equipe)
 
-		vivants := etatequipe.CompterVivants(equipe, 0)
+		vivants = etatequipe.CompterVivants(equipe, 0)
+		Morts = 6 - vivants
 		fmt.Printf("%d personnages vivants\n", vivants)
 
 		if vivants == 0 {
 			fmt.Println("Team wype, go reset!")
 			break
-
-			// etatequipe.CompterVivants(equipe, 0)
-
 		}
-
 	}
+	if etatequipe.PeutContinuer(equipe) == true {
+		fmt.Println("=== FIN DE LA BATAILLE ===\n", "Nombre de Heros vivant :", vivants, "\n", "Nombre de Heros mort ::", Morts, "\n", "l'équipe peut continuer le combat")
+	}
+	if etatequipe.PeutContinuer(equipe) == false {
+		fmt.Println("=== FIN DE LA BATAILLE ===\n", "Nombre de Heros vivant :", vivants, "\n", "Nombre de Heros mort :", Morts, "\n", " Raid wype, go reset")
+	}
+
 }
 
 func afficherEquipe(equipe [6]stats.Soldat) {

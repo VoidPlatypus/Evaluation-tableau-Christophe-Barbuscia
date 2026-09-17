@@ -16,4 +16,10 @@ func CompterVivants(equipe [6]stats.Soldat, index int) int {
 }
 
 
-// func peutContinuer(equipe [6]Soldat) bool
+func PeutContinuer(equipe [6]stats.Soldat) bool{
+  if CompterVivants(equipe, 0) > 0 {
+        return true
+    } else {
+        return false
+    }
+}
