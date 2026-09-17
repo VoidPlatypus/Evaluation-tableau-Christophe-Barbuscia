@@ -1,4 +1,4 @@
-package main
+package attaques
 
 import (
 	"exercices1/stats"
@@ -6,7 +6,7 @@ import (
 )
 
 // cette fonction me permet de gerer l'attaque
-func attaquerEquipe(equipe *[6]stats.Soldat, degats int) {
+func AttaquerEquipe(equipe *[6]stats.Soldat, degats int) {
 
 	fmt.Print("attaque de l'ennemie en Dgt : ")
 	fmt.Scan(&degats)

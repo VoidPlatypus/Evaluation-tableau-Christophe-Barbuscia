@@ -1,22 +1,24 @@
 package main
 
 import (
+	"exercices1/attaques"
+	"exercices1/etatequipe"
 	"exercices1/stats"
 	"fmt"
 )
 
 func main() {
 	equipe := [6]stats.Soldat{
-        {Nom: "Arthas", Vie: 1200, Attaque: 250},
-        {Nom: "Kael", Vie: 850, Attaque: 320},
-        {Nom: "Thrall", Vie: 1500, Attaque: 180},
-        {Nom: "Sylvanas", Vie: 700, Attaque: 400},
-        {Nom: "Garrosh", Vie: 1000, Attaque: 280},
-        {Nom: "Jaina", Vie: 500, Attaque: 450},
-    }
+		{Nom: "Arthas", Vie: 1200, Attaque: 250},
+		{Nom: "Kael", Vie: 850, Attaque: 320},
+		{Nom: "Thrall", Vie: 1500, Attaque: 180},
+		{Nom: "Sylvanas", Vie: 700, Attaque: 400},
+		{Nom: "Garrosh", Vie: 1000, Attaque: 280},
+		{Nom: "Jaina", Vie: 500, Attaque: 450},
+	}
 
 	tank := stats.TrouverPlusDeVie(equipe)
-	fmt.Printf("Le tank est %s avec %d PV\n", tank, tank)
+	fmt.Printf("Le tank est %s avec %d PV\n", tank.Nom, tank.Vie)
 
 	dps := stats.TrouverPlusDAttaque(equipe)
 	fmt.Printf("le plus gros dps de l'équipe est %s avec %d str\n", dps.Nom, dps.Attaque)
@@ -26,9 +28,8 @@ func main() {
 
 	unstuff := stats.CompterFaibles(equipe)
 	fmt.Printf("les heros les moins stuff sont au nombre de %d\n", unstuff)
-	
-	afficherEquipe(equipe)
 
+	afficherEquipe(equipe)
 
 	degats := 0
 	NombreAttaque := 0
@@ -36,11 +37,22 @@ func main() {
 	fmt.Println("combien d'attaques fait l'énnemi?")
 	fmt.Scan(&NombreAttaque)
 	for i := 0; i < NombreAttaque; i++ {
-		attaquerEquipe(&equipe, degats)
+		attaques.AttaquerEquipe(&equipe, degats)
+
 		afficherEquipe(equipe)
 
-	}
+		vivants := etatequipe.CompterVivants(equipe, 0)
+		fmt.Printf("%d personnages vivants\n", vivants)
 
+		if vivants == 0 {
+			fmt.Println("Team wype, go reset!")
+			break
+
+			// etatequipe.CompterVivants(equipe, 0)
+
+		}
+
+	}
 }
 
 func afficherEquipe(equipe [6]stats.Soldat) {

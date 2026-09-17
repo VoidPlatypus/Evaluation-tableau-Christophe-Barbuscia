@@ -8,9 +8,9 @@ type Soldat struct {
 
 func TrouverPlusDeVie(equipe [6]Soldat) Soldat {
 	PVmax := equipe[0]
-	for _, soldat := range equipe {
-		if soldat.Vie > PVmax.Vie {
-			PVmax = soldat
+	for _, Soldat := range equipe {
+		if Soldat.Vie > PVmax.Vie {
+			PVmax = Soldat
 		}
 	}
 	return PVmax
@@ -18,9 +18,9 @@ func TrouverPlusDeVie(equipe [6]Soldat) Soldat {
 
 func TrouverPlusDAttaque(equipe [6]Soldat) Soldat {
 	Strmax := equipe[0]
-	for _, soldat := range equipe {
-		if soldat.Attaque > Strmax.Attaque {
-			Strmax = soldat
+	for _, Soldat := range equipe {
+		if Soldat.Attaque > Strmax.Attaque {
+			Strmax = Soldat
 		}
 	}
 	return Strmax
@@ -29,18 +29,18 @@ func TrouverPlusDAttaque(equipe [6]Soldat) Soldat {
 func CalculerVieMoyenne(equipe [6]Soldat) float64 {
 	vietotal := 0
 
-	for _, soldat := range equipe {
-		vietotal += soldat.Vie
+	for _, Soldat := range equipe {
+		vietotal += Soldat.Vie
 	}
 	return float64(vietotal) / float64(len(equipe))
 }
 
 func CompterFaibles(equipe [6]Soldat) int {
-	soldatfaible := 0
-	for _, soldat := range equipe {
-		if soldat.Vie < 800 {
-			soldatfaible++
+	Soldatfaible := 0
+	for _, Soldat := range equipe {
+		if Soldat.Vie < 800 {
+			Soldatfaible++
 		}
 	}
-	return soldatfaible
+	return Soldatfaible
 }
