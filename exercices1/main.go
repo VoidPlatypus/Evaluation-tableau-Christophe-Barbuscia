@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	equipe := [6]stats.Soldat{
+	equipe := []stats.Soldat{
 		{Nom: "Arthas", Vie: 1200, Attaque: 250},
 		{Nom: "Kael", Vie: 850, Attaque: 320},
 		{Nom: "Thrall", Vie: 1500, Attaque: 180},
@@ -61,7 +61,7 @@ func main() {
 
 }
 
-func afficherEquipe(equipe [6]stats.Soldat) {
+func afficherEquipe(equipe []stats.Soldat) {
 	for i := 0; i < len(equipe); i++ {
 		if equipe[i].Vie == 0 {
 			fmt.Printf("Nom: %s Vie: KO, fallait pas rester dans les AOE   Attaque: %d\n", equipe[i].Nom, equipe[i].Attaque)

@@ -2,7 +2,7 @@ package etatequipe
 
 import "exercices1/stats"
 
-func CompterVivants(equipe [6]stats.Soldat, index int) int {
+func CompterVivants(equipe []stats.Soldat, index int) int {
 
 	if index == 6 {
 		return 0
@@ -16,7 +16,7 @@ func CompterVivants(equipe [6]stats.Soldat, index int) int {
 }
 
 
-func PeutContinuer(equipe [6]stats.Soldat) bool{
+func PeutContinuer(equipe []stats.Soldat) bool{
   if CompterVivants(equipe, 0) > 0 {
         return true
     } else {

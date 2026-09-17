@@ -6,7 +6,7 @@ type Soldat struct {
 	Attaque int
 }
 
-func TrouverPlusDeVie(equipe [6]Soldat) Soldat {
+func TrouverPlusDeVie(equipe []Soldat) Soldat {
 	PVmax := equipe[0]
 	for _, Soldat := range equipe {
 		if Soldat.Vie > PVmax.Vie {
@@ -16,7 +16,7 @@ func TrouverPlusDeVie(equipe [6]Soldat) Soldat {
 	return PVmax
 }
 
-func TrouverPlusDAttaque(equipe [6]Soldat) Soldat {
+func TrouverPlusDAttaque(equipe []Soldat) Soldat {
 	Strmax := equipe[0]
 	for _, Soldat := range equipe {
 		if Soldat.Attaque > Strmax.Attaque {
@@ -26,7 +26,7 @@ func TrouverPlusDAttaque(equipe [6]Soldat) Soldat {
 	return Strmax
 }
 
-func CalculerVieMoyenne(equipe [6]Soldat) float64 {
+func CalculerVieMoyenne(equipe []Soldat) float64 {
 	vietotal := 0
 
 	for _, Soldat := range equipe {
@@ -35,7 +35,7 @@ func CalculerVieMoyenne(equipe [6]Soldat) float64 {
 	return float64(vietotal) / float64(len(equipe))
 }
 
-func CompterFaibles(equipe [6]Soldat) int {
+func CompterFaibles(equipe []Soldat) int {
 	Soldatfaible := 0
 	for _, Soldat := range equipe {
 		if Soldat.Vie < 800 {
